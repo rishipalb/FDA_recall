@@ -6,7 +6,7 @@ st.markdown("# Search Product Recalls 🎉")
 st.sidebar.markdown("# Search Options 🎉")
 
 st.write('Results of custom search')
-df = pd.read_excel('recalls.xlsx')
+df = pd.read_excel('data/recalls.xlsx')
 df["Date"] = pd.to_datetime(df["Date"])
 df["Date"] = df["Date"].dt.strftime("%Y-%m-%d") #MMM DD, YYYY
 #st.write(df)
