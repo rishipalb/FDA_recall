@@ -8,8 +8,9 @@ from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
 import matplotlib.pyplot as plt
 from dateutil.relativedelta import relativedelta # to add days or years
 
-
 st.markdown("# FDA Product Recall 🎈")
+st.markdown("FDA recalls in this app that is available @ https://www.fda.gov/media/145551/download. Source: https://www.fda.gov/about-fda/open-government-fda-data-sets/recalls-data-sets. Note: The recall list is only Firm-issued recall dataset.")
+
 st.sidebar.markdown("# Recent Recall Status 🎈")
 
 def main_page():
@@ -52,41 +53,51 @@ test_sort = df.sort_values(['Date'], ascending=[False])[:20]
 
 slider = st.sidebar.slider('Select the range in days', min_value=0, value=30, max_value=60)
 selected_date=end_date -relativedelta(days=slider)
+
+
+# Sanity check
+st.sidebar.table(pd.DataFrame([[selected_date, end_date]],
+                      columns=['selected date',
+                               'end date'],
+                      index=['date']))
+
 st.sidebar.markdown("# Historical data 🎈")
 min_bar = st.sidebar.slider("Minimum bars for charts", 5, 100, 40, 1)
 image_size = st.sidebar.slider("Word Cloud Image Width", 100, 800, 400, 10)
-st.sidebar.markdown("Exclude terminated recall?")
+st.sidebar.markdown("Exclude terminated recalls?")
 rem_terminated = st.sidebar.checkbox('Yes')
-
-# Sanity check
-st.table(pd.DataFrame([[start_date, selected_date, end_date]],
-                      columns=['start',
-                               'selected',
-                               'end'],
-                      index=['date']))
 
 # Select DataFrame rows between two dates using DataFrame.isin()
 #df2 = df[df["Date"].isin(pd.date_range(selected_date, end_date))]
 
-st.markdown("### Recent Recalls ❄️")
+# CSS to inject contained in a string
+hide_table_row_index = """
+            <style>
+            thead tr th:first-child {display:none}
+            tbody th {display:none}
+            </style>
+            """
+
+# Inject CSS with Markdown
+st.markdown(hide_table_row_index, unsafe_allow_html=True)
+
+
 if rem_terminated:
     df = df[(~df['Terminated Recall'].str.contains('Terminated', case=False, na=False))]
 
-    #st.write('Test Ter:', test_sort2)
-# else:
-#     show_all = df.query('Date > @selected_date and Date < @end_date')
-#     test_sort2 = show_all.sort_values(['Date'], ascending=[False])
-    
+# Constrict dataframe between two dates    
 df2 = df.query('Date > @selected_date and Date < @end_date')
-test_sort2 = df2.sort_values(['Date'], ascending=[False])
-st.write(test_sort2)
 
+# Join string from each row of a column
 text = " ".join(review for review in df['Product-Types'].astype(str))
 
 
-tab1, tab2 = st.tabs(['Bar Chart', 'Word Cloud'])
-
+tab1, tab2, tab3 = st.tabs(['Recent Recalls', 'Bar Chart', 'Word Cloud'])
 with tab1:
+    st.markdown("### Recent Recalls ❄️")
+    test_sort2 = df2.sort_values(['Date'], ascending=[False])
+    st.table(test_sort2)
+with tab2:
     # create two columns for charts
     fig_col1, fig_col2 = st.columns(2)
     with fig_col1:
@@ -111,7 +122,7 @@ with tab1:
         )
         st.altair_chart(brand)
     st.write('* Results shown above are for historical data.')
-with tab2:
+with tab3:
     st.markdown("### Word cloud of Product-Types")
     text = " ".join(review for review in df['Product-Types'].astype(str))
     
@@ -133,16 +144,8 @@ with tab2:
     st.write("There are {} words in the combination of all cells in column Recall-Reason-Description.".format(len(text1)))
     #st.write(wc1.words_.keys())
     st.write('* Results shown above are for historical data.')
-#'''
-#df1 = df.groupby(['Product-Types'])['Product-Types'].count().reset_index(name='count').sort_values(by=['count'], ascending=False)[:min_bar]
-#df1 = test_count.sort_values(by=['count'], ascending=False)[:min_bar]
-#st.write(df1)
-#st.markdown("### Most Recalled Brand Names1")
-##brand_count = df.groupby(['Brand-Names'])['Brand-Names'].count().reset_index(name='count')
-#search_count
-#brand1 = alt.Chart(df1).mark_bar().encode(
-#x=alt.X("Product-Types:O", sort='-y'),
-#y='count:Q'
-#)
 
-#st.altair_chart(brand1) '''
+st.write("**Disclaimer:** This is app is for experimental and educational purpose only. The dataset may not be current and therefore would result in inaccurate and outdate information. The developer does not take any responsibility in the event of potential harm caused by the inadvertent use of this app.")
+
+    
+
