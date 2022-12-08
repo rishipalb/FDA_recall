@@ -1,13 +1,7 @@
 altair==4.2.0
-av==9.2.0
 matplotlib==3.6.2
-numpy==1.23.4
-opencv_python==4.6.0.66
 pandas==1.5.1
 Pillow==9.3.0
 python_dateutil==2.8.2
-pyzbar==0.1.9
-requests==2.28.1
-streamlit==1.15.1
-streamlit_webrtc==0.44.0
+streamlit==1.15.2
 wordcloud==1.8.2.2
