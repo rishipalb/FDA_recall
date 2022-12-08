@@ -62,7 +62,7 @@ st.sidebar.table(pd.DataFrame([[selected_date, end_date]],
                       index=['date']))
 
 st.sidebar.markdown("# Historical data 🎈")
-min_bar = st.sidebar.slider("Minimum bars for charts", 5, 100, 40, 1)
+min_bar = st.sidebar.slider("Minimum bars for charts", 5, 40, 5, 1)
 image_size = st.sidebar.slider("Word Cloud Image Width", 100, 800, 400, 10)
 st.sidebar.markdown("Exclude terminated recalls?")
 rem_terminated = st.sidebar.checkbox('Yes')
@@ -121,6 +121,7 @@ with tab2:
         y=alt.Y("Brand-Names:O", sort='-x')
         )
         st.altair_chart(brand)
+        st.write(brand_count.iloc[0:1,0:1])
     st.write('* Results shown above are for historical data.')
 with tab3:
     st.markdown("### Word cloud of Product-Types")
