@@ -3,7 +3,7 @@ import requests
 import json
 #import xmltodict
 import pandas as pd
-#import cv2
+import cv2
 import numpy as np
 from dotenv import load_dotenv
 import os
@@ -56,29 +56,9 @@ def upc_check(upc_code):
         else:
             st.error("**Input error:** Please enter UPC code with 12 digits.")
 
-tab1, tab2 = st.tabs(['Search UPC', 'Scan QR code'])
-with tab1:
-    st.markdown("## UPC Search")
-    upc_check(st.text_input("**Enter UPC code:**"))
-#with tab2:
-"""     st.markdown("## QR Scan")
-    cam_on = st.checkbox("Turn camera on")
-    
-    if cam_on:
-        image = st.camera_input("**Show QR code:**")
 
-
-        if image is not None:
-            bytes_data = image.getvalue()
-            cv2_img = cv2.imdecode(np.frombuffer(bytes_data, np.uint8), cv2.IMREAD_COLOR)
-
-            detector = cv2.QRCodeDetector()
-
-            data, bbox, straight_qrcode = detector.detectAndDecode(cv2_img)
-
-            #st.write("Here!")
-            st.write(data)
-            upc_check(data) """
+#st.markdown("## UPC Search")
+upc_check(st.text_input("Enter UPC code:"))
 
 st.info("**Example**: 046675013624, 046675013501.")
 st.info("UPC search is powered by RapidAPI and Edamam-Food Database API.")
