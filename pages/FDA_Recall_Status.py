@@ -53,7 +53,7 @@ test_sort = df.sort_values(['Date'], ascending=[False])[:20]
 #test_sort = pd.DataFrame('test_sort')
 #st.write(test_sort)
 
-slider = st.sidebar.slider('**Select the range in days**', min_value=0, value=30, max_value=60)
+slider = st.sidebar.slider('Select the range in days', min_value=0, value=30, max_value=60)
 selected_date=end_date -relativedelta(days=slider)
 
 
@@ -101,12 +101,9 @@ df2 = df.query('Date > @selected_date and Date < @end_date')
 text = " ".join(review for review in df['Product-Types'].astype(str))
 
 
-tab1, tab2, tab3 = st.tabs(['Recent Recalls', 'Bar Chart', 'Word Cloud'])
+tab1, tab2, tab3 = st.tabs(['Trends', 'Recent Recalls', 'Word Cloud'])
+
 with tab1:
-    st.markdown("### Recent Recalls ❄️")
-    test_sort2 = df2.sort_values(['Date'], ascending=[False])
-    st.table(test_sort2)
-with tab2:
     # create two columns for charts
     fig_col1, fig_col2 = st.columns(2)
     with fig_col1:
@@ -136,29 +133,6 @@ with tab2:
         st.write(f"If terminated recalls were excluded, the product category with highest recalls was: {type_count['Product-Types'].values[0]}. The brand with highest recall was: {brand_count['Brand-Names'].values[0]}.")
     else:
         st.write(f"Overall, the product category with highest recalls was: {type_count['Product-Types'].values[0]}. The brand with most recalls was: {brand_count['Brand-Names'].values[0]}.")
-
-with tab3:
-    st.markdown("### Word cloud of Product-Types")
-    text = " ".join(review for review in df['Product-Types'].astype(str))
-    
-    stopwords = set(STOPWORDS)
-    stopwords.update(["Food & Beverages,"])
-    cloud = WordCloud(stopwords=stopwords, background_color="white", width=800, height=400)
-    wc = cloud.generate(text)
-    word_cloud = cloud.to_file('wordcloud.png')
-    st.image(wc.to_array(), width=image_size) # wc.to_array()
-    st.write("There are {} words in the combination of all cells in column Product-Types.".format(len(text)))
-
-    st.markdown("### Word cloud of Recall-Reason-Description")
-    text1 = " ".join(review for review in df['Recall-Reason-Description'].astype(str))
-    cloud1 = WordCloud(stopwords=stopwords, background_color="yellow", width=800, height=400)
-    wc1 = cloud1.generate(text1)
-    word_cloud1 = wc1.to_file('wordcloud1.png')
-    st.image(word_cloud1.to_array(), width=image_size)
-    st.write("There are {} words in the combination of all cells in column Recall-Reason-Description.".format(len(text1)))
-    #st.write(wc1.words_.keys())
-    
-with st.container():
     st.markdown("### Recalls each month per product type 🎉")
     text_1 = st.selectbox('**Select a category:**', cat_list)
 
@@ -191,9 +165,39 @@ with st.container():
 
         else:
             st.write("**Recall history:** No results.")
+    st.warning('* Results shown above are for historical data.')
+
+with tab2:
+    st.markdown("### Recent Recalls ❄️")
+    test_sort2 = df2.sort_values(['Date'], ascending=[False])
+    st.table(test_sort2)
+
+with tab3:
+    st.markdown("### Word cloud of Product-Types")
+    text = " ".join(review for review in df['Product-Types'].astype(str))
+    
+    stopwords = set(STOPWORDS)
+    stopwords.update(["Food & Beverages,"])
+    cloud = WordCloud(stopwords=stopwords, background_color="white", width=800, height=400)
+    wc = cloud.generate(text)
+    word_cloud = cloud.to_file('wordcloud.png')
+    st.image(wc.to_array(), width=image_size) # wc.to_array()
+    st.write("There are {} words in the combination of all cells in column Product-Types.".format(len(text)))
+
+    st.markdown("### Word cloud of Recall-Reason-Description")
+    text1 = " ".join(review for review in df['Recall-Reason-Description'].astype(str))
+    cloud1 = WordCloud(stopwords=stopwords, background_color="yellow", width=800, height=400)
+    wc1 = cloud1.generate(text1)
+    word_cloud1 = wc1.to_file('wordcloud1.png')
+    st.image(word_cloud1.to_array(), width=image_size)
+    st.write("There are {} words in the combination of all cells in column Recall-Reason-Description.".format(len(text1)))
+    #st.write(wc1.words_.keys())
+    st.warning('* Results shown above are for historical data.')
+    
+#with st.container():
 
 st.info('**Live update:** FDA recalls in this app is available @ https://www.fda.gov/media/145551/download. **Source:** https://www.fda.gov/about-fda/open-government-fda-data-sets/recalls-data-sets. **Note:** The recall list is only Firm-issued recall dataset.')
-st.warning('* Results shown above are for historical data.')
+
 st.info("**Disclaimer:** This is app is for experimental and educational purpose only. The dataset may not be current and therefore would result in inaccurate and outdate information. The developer does not take any responsibility in the event of potential harm caused by the inadvertent use of this app.")
 
     
