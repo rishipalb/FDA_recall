@@ -4,6 +4,7 @@ import numpy as np
 import datetime as dt
 
 st.markdown("# Search Product Recalls 🎉")
+st.markdown("This app is designed to provide a easy-to-use user interface for checking the recent recalls enforced by the Food and Drug Administration (FDA). It also provides a visual analysis of the FDA’s recall history, presents trends and shows the most common recall reasons.")
 
 
 st.markdown('## Search Options')
@@ -20,7 +21,7 @@ start_date = st.sidebar.date_input("**Select a start date**",
 end_date = st.sidebar.date_input("**Select an end date**",
     today)
 st.sidebar.markdown("**Exclude terminated recalls?**")
-st.sidebar.write("Select this option to remove recalls that were resolved or no longer active.")
+st.sidebar.write("Select this option to remove recalls that were resolved or are no longer active.")
 rem_terminated = st.sidebar.checkbox('Yes')
 
 # CSS to inject contained in a string
@@ -57,7 +58,7 @@ tab1, tab2, tab3 = st.tabs(['Keyword Search', 'Multi Search', 'Nested'])
 with tab1:
     st.markdown("Results of custom search 🎉")
     text_1 = st.text_input('**Search keywords**', '')
-    st.write("**Example:** whole foods")
+    st.info("**Example:** whole foods")
     if text_1 != '':
         new_df1 = df2[(df2['Product-Types'].str.contains(text_1, case=False, na=False)) | (df2['Brand-Names'].str.contains(text_1, case=False, na=False)) | (df2['Company-Name'].str.contains(text_1, case=False, na=False))| (df2['Product-Description'].str.contains(text_1, case=False, na=False)) | (df2['Recall-Reason-Description'].str.contains(text_1, case=False, na=False))].sort_values(by=['Date'], ascending=False)
         new_df1 = new_df1.sort_values(['Date'], ascending=[False])
@@ -112,4 +113,4 @@ with tab3:
         st.table(new_df)
 
 
-st.write("**Disclaimer:** This is app is for experimental and educational purpose only. The dataset may not be current and therefore would result in inaccurate and outdate information. The developer does not take any responsibility in the event of potential harm caused by the inadvertent use of this app.")
+st.info("**Disclaimer:** This is app is for experimental and educational purpose only. The dataset may not be current and therefore would result in inaccurate and outdate information. The developer does not take any responsibility in the event of potential harm caused by the inadvertent use of this app.")
