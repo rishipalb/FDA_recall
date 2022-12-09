@@ -56,7 +56,7 @@ tab1, tab2 = st.tabs(['Keyword Search', 'Multi Search'])
 
 
 with tab1:
-    st.markdown("Results of custom search 🎉")
+    
     text_1 = st.text_input('**Search keywords**', '')
     st.info("**Example:** whole foods")
     if text_1 != '':
@@ -66,6 +66,7 @@ with tab1:
         #st.write('**Text input results:**', new_df1)
         if not new_df1.empty:
             # write dataframe to screen
+            st.markdown("**Results of custom search** 🎉")
             st.table(new_df1)
         else:
             st.write("**Recall history:** Could not find a match.")
