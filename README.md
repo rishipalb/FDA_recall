@@ -16,3 +16,6 @@ This app is designed to provide a easy to use user interface for checking the re
 ## API_KEY
 The ‘page’ UPC search uses RapidAPI access to enable ‘Edamam Food Database’. Ensure you enter your personal API_KEY=“PASSKEY” for the application to work as expected. Also, ensure to keep you personal API_KEY private and not share or make it public. One way is to make a .env file and enable .gitignore to prevent the .env file from being committed to the gitHub repository.
 A dummy .env is made available in the repository.
+
+# Streamlit App
+The Streamlit app is hosted at: https://rishipalb-fda-recall-search-options-ji0qbs.streamlit.app/
