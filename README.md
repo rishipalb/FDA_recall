@@ -12,6 +12,10 @@ A food recall is the removal from the market of food that violates US Food and D
 ## About this app
 This app is designed to provide a easy to use user interface for checking the recent recalls enforced by the Food and Drug Administration (FDA). It also provides a visual analysis of the FDA’s recall history, presents trends and shows the most common recall reasons.
 
+## Dataset
+**Live update:** FDA live recalls in XML format used in this app is available at: https://www.fda.gov/media/145551/download. 
+**Source:** The excel file used for this app can be dowloaded at: https://www.fda.gov/about-fda/open-government-fda-data-sets/recalls-data-sets. 
+**Note:** The recall list is only Firm-issued recall dataset.
 
 ## API_KEY
 The ‘page’ UPC search uses RapidAPI access to enable ‘Edamam Food Database’. Ensure you enter your personal API_KEY=“PASSKEY” for the application to work as expected. Also, ensure to keep you personal API_KEY private and not share or make it public. One way is to make a .env file and enable .gitignore to prevent the .env file from being committed to the gitHub repository.
@@ -19,3 +23,6 @@ A dummy .env is made available in the repository.
 
 # Streamlit App
 The Streamlit app is hosted at: https://rishipalb-fda-recall-search-options-ji0qbs.streamlit.app/
+
+## Disclaimer
+This is app is for experimental and educational purpose only. The dataset may not be current and therefore would result in inaccurate and outdate information. The developer does not take any responsibility in the event of potential harm caused by the inadvertent use of this app.
