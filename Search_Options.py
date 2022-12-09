@@ -4,7 +4,7 @@ import numpy as np
 import datetime as dt
 
 st.markdown("# Search Product Recalls 🎉")
-st.markdown("This app is designed to provide a easy-to-use user interface for checking the recent recalls enforced by the Food and Drug Administration (FDA). It also provides a visual analysis of the FDA’s recall history, presents trends and shows the most common recall reasons.")
+st.markdown("This app is designed to provide an easy-to-use user interface for checking the recent recalls enforced by the Food and Drug Administration (FDA). It also provides a visual analysis of the FDA’s recall history, presents trends and shows the most common recall reasons.")
 
 
 st.markdown('## Search Options')
