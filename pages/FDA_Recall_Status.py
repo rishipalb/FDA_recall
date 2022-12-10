@@ -155,14 +155,25 @@ with tab1:
             #st.write(prod_count.dtypes)
             prod_count["Date"] = prod_count["Date"].astype('datetime64[ns]')
 
+            
+            
             st.markdown("**Line chart for number of recalls each month per product type**")
             line_all = alt.Chart(prod_count).mark_line().encode(
-                x='Date', y='count:Q', color='Terminated Recall').configure_axis(
-                    grid=False
-                    ).interactive()
+                        x='Date', y='count:Q', color='Terminated Recall').configure_axis(
+                            grid=False
+                            ).interactive()
 
             st.altair_chart(line_all, use_container_width=800)
-
+            
+            st.markdown("**Bar chart**")
+                ## Bar chart
+            terminate_count = new_df1.groupby(['Terminated Recall'])['Terminated Recall'].count().reset_index(name='count')
+                #search_count
+            bar_all = alt.Chart(terminate_count).mark_bar().encode(
+                    x="count:Q",
+                    y="Terminated Recall:O", color='Terminated Recall'
+                    )
+            st.altair_chart(bar_all, use_container_width=600)
         else:
             st.write("**Recall history:** No results.")
     st.warning('* Results shown above are for historical data.')
