@@ -7,7 +7,7 @@ A food recall occurs when a food manufacturer withdraws a product from the marke
 
 Detection of organisms including bacteria such as Salmonella and parasites such as Cyclospora, find foreign objects such as broken glass or metal. Discovery of major allergens not listed on the product label.
 
-A food recall is the removal from the market of food that violates US Food and Drug Administration (FDA) regulations. Food recalls are usually initiated voluntarily by the food manufacturer or distributor. In some cases, the FDA may request or order a recall.
+A food recall is the removal from the market of food that violates US Food and Drug Administration (FDA) regulations. Food recalls are usually initiated voluntarily by the food manufacturer or distributor. In some cases, the FDA may request or order a recall. Although, the FDA database is comprehensive, it presents challenges to general public due to complex interface and technical.
 
 ## About this app
 This app is designed to provide a easy to use user interface for checking the recent recalls enforced by the Food and Drug Administration (FDA). It also provides a visual analysis of the FDA’s recall history, presents trends and shows the most common recall reasons.
