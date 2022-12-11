@@ -24,6 +24,23 @@ Excel file is read into the dataframe as below:
 df = pd.read_excel('data/recalls.xlsx')
 df["Date"] = df["Date"].astype('datetime64[ns]')
 ```
+Alternately, the xml link can be parsed as such:
+```
+def getxml():
+    url = "https://www.fda.gov/media/155924/download"
+    http = urllib3.PoolManager()
+    response = http.request('GET', url)
+    try:
+        data = xmltodict.parse(response.data, encoding='utf-8')
+    except:
+        st.write("Failed to parse xml from response (%s)" % traceback.format_exc())
+    return data
+data = getxml()
+dict_ = getxml()
+label = dict_['recallsdata']['recalls']
+df = pd.DataFrame(label)
+df['Date'] = pd.to_datetime(df['Date'])
+```
 
 ## API_KEY
 The ‘page’ UPC search uses RapidAPI access to enable ‘Edamam Food Database’. Ensure you enter your personal API_KEY=“PASSKEY” for the application to work as expected. Also, ensure to keep you personal API_KEY private and not share or make it public. One way is to make a .env file and enable .gitignore to prevent the .env file from being committed to the gitHub repository.
