@@ -43,8 +43,7 @@ df['Date'] = pd.to_datetime(df['Date'])
 ```
 
 ## API_KEY
-The ‘page’ UPC search uses RapidAPI access to enable ‘Edamam Food Database’. Ensure you enter your personal API_KEY=“PASSKEY” for the application to work as expected. Also, ensure to keep you personal API_KEY private and not share or make it public. One way is to make a .env file and enable .gitignore to prevent the .env file from being committed to the gitHub repository.
-A dummy .env is made available in the repository.
+The ‘page’ UPC search uses RapidAPI access to enable ‘Edamam Food Database’. Ensure you enter your personal API_KEY=“PASSKEY” for the application to work as expected. Also, ensure to keep you personal API_KEY private and not share or make it public. One way is to make a .env file and enable .gitignore to prevent the .env file from being committed to the gitHub repository. A dummy .env is made available in the repository. Also, ensure that the the API_KEY added to the secret section of the Streamlit app available in the app's settings.
 
 ## Future work
 The app is designed for point-of-use, such as grocery stores and or to quickly search the recalled products with minimal efforts. A barcode scanner is in works using the st.camera feature of the Streamlit app. ALthough, a QR code scanner has been successfully demonstrated there are some hurdles deploying it on the streamlit cloud. Also, the barcode scanner has been sub-optimal. Hopefully, these libraries will be updated for efficient immplementation in the Streamlit app in the future.
