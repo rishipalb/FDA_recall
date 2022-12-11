@@ -15,7 +15,7 @@ This app is designed to provide a easy to use user interface for checking the re
 ## Dataset
 **Live update:** FDA live recalls in XML format used in this app is available at: https://www.fda.gov/media/145551/download. 
 
-**Source:** The excel file used for this app can be dowloaded at: https://www.fda.gov/about-fda/open-government-fda-data-sets/recalls-data-sets. 
+**Source:** The excel file used for this app can be dowloaded at: https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts. 
 
 **Note:** The recall list is only Firm-issued recall dataset.
 
