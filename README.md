@@ -49,7 +49,7 @@ The ‘page’ UPC search uses RapidAPI access to enable ‘Edamam Food Database
 The app is designed for point-of-use, such as grocery stores and or to quickly search the recalled products with minimal efforts. A barcode scanner is in works using the st.camera feature of the Streamlit app. ALthough, a QR code scanner has been successfully demonstrated there are some hurdles deploying it on the streamlit cloud. Also, the barcode scanner has been sub-optimal. Hopefully, these libraries will be updated for efficient immplementation in the Streamlit app in the future.
 
 # Streamlit App
-The Streamlit app is available at: https://rishipalb-fda-recall-search-options-ji0qbs.streamlit.app/
+The Streamlit app is available at: https://rishipalb-fda-recall-fda-recall-search-edlw5f.streamlit.app/
 
 ## Disclaimer
 This is app is for experimental and educational purpose only. The dataset may not be current and therefore would result in inaccurate and outdate information. The developer does not take any responsibility in the event of potential harm caused by the inadvertent use of this app.
