@@ -3,6 +3,7 @@ import requests
 import json
 #import xmltodict
 import pandas as pd
+import cv2
 import numpy as np
 from dotenv import load_dotenv
 import os
@@ -12,7 +13,7 @@ load_dotenv()
 
 API_KEY = os.getenv("API_KEY")
 
-st.markdown("# Product UPC Search")
+st.markdown("# Food Product UPC Search")
 
 df = pd.read_excel('data/recalls.xlsx')
 df["Date"] = df["Date"].astype('datetime64[ns]')
