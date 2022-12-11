@@ -194,6 +194,7 @@ with tab3:
     word_cloud = cloud.to_file('wordcloud.png')
     st.image(wc.to_array(), width=image_size) # wc.to_array()
     st.write("There are {} words in the combination of all cells in column Product-Types.".format(len(text)))
+    st.write('The words with high frequency were Food, Beverage/s, Allergens, Drugs, Safety, Food-borne. When terminated recalls were excluded there is a similar word cloud pattern except that Medical Devices also show up among the high frequency words. This signifies that Medical Devices product type are more likely to have their recalls terminated or resolved compared to other product types.')
 
     st.markdown("### Word cloud of Recall-Reason-Description")
     text1 = " ".join(review for review in df['Recall-Reason-Description'].astype(str))
@@ -202,6 +203,7 @@ with tab3:
     word_cloud1 = wc1.to_file('wordcloud1.png')
     st.image(word_cloud1.to_array(), width=image_size)
     st.write("There are {} words in the combination of all cells in column Recall-Reason-Description.".format(len(text1)))
+    st.write('The word cloud on recall reason show words such as ‘Potential’, Salmonella, Listeria monocytogenes, Undeclared milk, Contaminated as high frequency words. When terminated recalls is excluded the word cloud show words such as Salmonella, Potential, Listeria monocytogenes, undeclared more prominently than when terminated calls is included. This means that product contaminated with Salmonella and Listeria monocytogenes do not get resolved or are not terminated compared to other recall reasons.')
     #st.write(wc1.words_.keys())
     st.warning('* Results shown above are for historical data.')
     
