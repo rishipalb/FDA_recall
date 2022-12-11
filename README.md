@@ -20,9 +20,9 @@ This app is designed to provide a easy to use user interface for checking the re
 **Note:** The recall list is only Firm-issued recall dataset.
 
 Excel file is read into the dataframe as below:
-'''
+```
 df = pd.read_excel('data/recalls.xlsx')
-df["Date"] = df["Date"].astype('datetime64[ns]')'''
+df["Date"] = df["Date"].astype('datetime64[ns]')```
 
 ## API_KEY
 The ‘page’ UPC search uses RapidAPI access to enable ‘Edamam Food Database’. Ensure you enter your personal API_KEY=“PASSKEY” for the application to work as expected. Also, ensure to keep you personal API_KEY private and not share or make it public. One way is to make a .env file and enable .gitignore to prevent the .env file from being committed to the gitHub repository.
