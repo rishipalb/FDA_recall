@@ -40,6 +40,24 @@ max_days = end_date-start_date
 
 #st.header("FDA Product Recalls")
 
+# XML link parsing
+# def getxml():
+#     url = "https://www.fda.gov/media/155924/download"
+#     http = urllib3.PoolManager()
+#     response = http.request('GET', url)
+#     try:
+#         data = xmltodict.parse(response.data, encoding='utf-8')
+#     except:
+#         st.write("Failed to parse xml from response (%s)" % traceback.format_exc())
+#     return data
+# data = getxml()
+# dict_ = getxml()
+# label = dict_['recallsdata']['recalls']
+# df = pd.DataFrame(label)
+# df['Date'] = pd.to_datetime(df['Date'])
+
+
+# Dataset from local excel file
 df = pd.read_excel('data/recalls.xlsx')
 #df["Date"] = pd.to_datetime(df["Date"])
 #df["Date"] = df["Date"].dt.strftime("%Y-%m-%d") #MMM DD, YYYY
